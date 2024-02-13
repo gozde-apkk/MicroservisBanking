@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2D0DEC44-E3BE-4AFE-AEBA-677828010D51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F981B63C-1CEC-4B25-9CEF-E162C46364F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{7F204BAD-A597-43E5-AA32-E22269DEB2C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsBanking.Core", "src\API\MsBanking.Core\MsBanking.Core.csproj", "{CC6BF470-4C77-4CE7-95CF-4C476BEB04CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsBanking.Common", "src\MsBanking.Common\MsBanking.Common.csproj", "{E36C50DA-F858-458C-B7EB-82F8A284D7C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC6BF470-4C77-4CE7-95CF-4C476BEB04CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC6BF470-4C77-4CE7-95CF-4C476BEB04CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC6BF470-4C77-4CE7-95CF-4C476BEB04CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC6BF470-4C77-4CE7-95CF-4C476BEB04CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E36C50DA-F858-458C-B7EB-82F8A284D7C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E36C50DA-F858-458C-B7EB-82F8A284D7C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E36C50DA-F858-458C-B7EB-82F8A284D7C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E36C50DA-F858-458C-B7EB-82F8A284D7C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F981B63C-1CEC-4B25-9CEF-E162C46364F9} = {2D0DEC44-E3BE-4AFE-AEBA-677828010D51}
+		{7F204BAD-A597-43E5-AA32-E22269DEB2C5} = {2D0DEC44-E3BE-4AFE-AEBA-677828010D51}
+		{CC6BF470-4C77-4CE7-95CF-4C476BEB04CF} = {F981B63C-1CEC-4B25-9CEF-E162C46364F9}
+		{E36C50DA-F858-458C-B7EB-82F8A284D7C2} = {2D0DEC44-E3BE-4AFE-AEBA-677828010D51}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {455C2D13-FB90-404B-B8F9-A69B7CA4F26E}
+	EndGlobalSection
+EndGlobal
