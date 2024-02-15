@@ -51,16 +51,17 @@ namespace MsBanking.Core.Services
             return customerResponse;
         }
 
-        public async Task<CustomerResponseDto> UpdateCustomer( int id, Customer customer)
+        public async Task<CustomerResponseDto> UpdateCustomer(int id, CustomerDto customer)
         {
             var customerEntity = mapper.Map<Customer>(customer);
 
             customerEntity.UpdatedDate = DateTime.Now;
-            await customerCollection.ReplaceOneAsync(c => c.Id == id, customer);
+            await customerCollection.ReplaceOneAsync(c => c.Id == id, customerEntity);
 
-            var customerResponseDto = mapper.Map<CustomerResponseDto>(customer);
+            var customerResponseDto = mapper.Map<CustomerResponseDto>(customerEntity);
             return customerResponseDto;
         }
+
 
         public async Task<bool> DeleteCustomer(int id)
         {
@@ -70,5 +71,6 @@ namespace MsBanking.Core.Services
             var result = await customerCollection.ReplaceOneAsync(x => x.Id == id, entity);
             return result.ModifiedCount > 0;    
         }
+
     }
 }
