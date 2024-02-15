@@ -2,6 +2,8 @@
 using MsBanking.Core.Apis;
 using MsBanking.Core.Domain;
 using MsBanking.Core.Services;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 namespace MsBanking.Core
 {
@@ -33,7 +35,7 @@ namespace MsBanking.Core
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
+            app.UseOcelot();    
             app.MapGroup("api/v1/")
                 .WithTags("Core Banking Api v1")
                 .MapCustomerApi();
