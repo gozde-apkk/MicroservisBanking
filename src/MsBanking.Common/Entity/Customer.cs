@@ -15,7 +15,7 @@ namespace MsBanking.Common.Entity
         public string? FullName { get; set;}
 
         public long? CitizenNumber { get; set; }
-        public string? Email { get; set;}
+                public string? Email { get; set;}
 
         public DateTime BirthDate { get; set; }
     }
