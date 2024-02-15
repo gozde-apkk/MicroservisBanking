@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MsBanking.Common.Entity
 {
-    public class Customer
+    public class Customer : BaseEntity  
     {
         [BsonId]
         [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
