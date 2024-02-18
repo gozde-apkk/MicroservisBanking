@@ -17,7 +17,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IBranchService, BranchService>();
 builder.Services.AddAutoMapper(typeof(BranchProfile));
-builder.Services.AddDbContext<BranchDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); 
+builder.Services.AddDbContext<BranchDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+builder.Services.AddStackExchangeRedisCache(opt =>
+{
+    opt.Configuration = builder.Configuration.GetConnectionString("Redis");
+});
 var app = builder.Build();
 
 app.MapGroup("/api/v1/")
