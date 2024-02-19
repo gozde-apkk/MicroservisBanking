@@ -1,6 +1,0 @@
-@MsBanking.Core.Account_HostAddress = http://localhost:5103
-
-GET {{MsBanking.Core.Account_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
