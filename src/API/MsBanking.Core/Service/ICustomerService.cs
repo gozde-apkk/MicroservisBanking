@@ -1,11 +1,14 @@
-﻿using MsBanking.Common.Entity;
+﻿using MsBanking.Common.Dto;
+using MsBanking.Common.Entity;
 
 namespace MsBanking.Core.Service
 {
     public interface ICustomerService
     {
-        Task<Customer> CreateCustomer(Customer customer);
-        Task<Customer> GetCustomer(int id);
-        Task<List<Customer>> GetCustomers();
+        Task<CustomerResponseDto> CreateCustomer(CustomerDto customer);
+        Task<CustomerResponseDto> GetCustomer(int id);
+        Task<List<CustomerResponseDto>> GetCustomers();
+        Task<CustomerResponseDto> UpdateCustomer(int id, CustomerDto customer);
+        Task<bool> DeleteCustomer(int id);
     }
 }
