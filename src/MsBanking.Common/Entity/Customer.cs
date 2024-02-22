@@ -12,11 +12,9 @@ namespace MsBanking.Common.Entity
         [BsonId]
         [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
         public int Id { get; set; }
-        public string? FullName { get; set;}
-
+        public string? FullName { get; set; }
         public long? CitizenNumber { get; set; }
          public string? Email { get; set;}
-
         public DateTime BirthDate { get; set; }
     }
 }
