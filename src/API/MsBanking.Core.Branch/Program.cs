@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using MsBanking.Core.Branch;
+using MsBanking.Core.Branch.Domain;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +11,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
+builder.Services.AddDbContext<BranchDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,4 +29,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+
+DataSeeder.Seed(app);
 app.Run();
