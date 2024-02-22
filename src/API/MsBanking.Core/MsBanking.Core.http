@@ -1,4 +1,4 @@
-@MsBanking.Core_HostAddress = http://localhost:5138
+@MsBanking.Core_HostAddress = http://localhost:5038
 
 GET {{MsBanking.Core_HostAddress}}/weatherforecast/
 Accept: application/json
