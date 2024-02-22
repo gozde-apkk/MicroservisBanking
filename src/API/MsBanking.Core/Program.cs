@@ -1,3 +1,4 @@
+using MsBanking.Common.Dto;
 using MsBanking.Core.Apis;
 using MsBanking.Core.Domain;
 using MsBanking.Core.Service;
@@ -13,6 +14,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<DatabaseOptions>(builder.Configuration.GetSection("DatabaseOptions"));
 
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+
+builder.Services.AddAutoMapper(typeof(CustomerDtoProfile));
 
 var app = builder.Build();
 
