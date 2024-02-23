@@ -4,6 +4,8 @@ using MsBanking.Core.Branch;
 using MsBanking.Core.Branch.Api;
 using MsBanking.Core.Branch.Domain;
 using MsBanking.Core.Branch.Services;
+using Serilog.Events;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +38,13 @@ builder.Services.AddStackExchangeRedisCache(options =>
 
 var app = builder.Build();
 
+
+//serilog configuration
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.File("log.txt")
+    .WriteTo.Console(restrictedToMinimumLevel: LogEventLevel.Information)
+    .CreateLogger();
 
 
 // Configure the HTTP request pipeline.
