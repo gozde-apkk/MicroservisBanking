@@ -4,6 +4,8 @@ using MsBanking.Common.Dto;
 using MsBanking.Core.Account.Apis;
 using MsBanking.Core.Account.Domain;
 using MsBanking.Core.Account.Services;
+using Serilog.Events;
+using Serilog;
 
 namespace MsBanking.Core.Account
 {
@@ -25,8 +27,19 @@ namespace MsBanking.Core.Account
             //sql server
             builder.Services.AddDbContext<AccountDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
+
+
             var app = builder.Build();
 
+
+
+            //serilog configuration
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.File("log.txt")
+                .WriteTo.Console(restrictedToMinimumLevel: LogEventLevel.Information)
+                .CreateLogger();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
