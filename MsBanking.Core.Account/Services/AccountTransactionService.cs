@@ -14,7 +14,7 @@ namespace MsBanking.Core.Account.Services
 
         public AccountTransactionService(AccountDbContext _db, IMapper _mapper)
         {
-            mapper = _mapper;
+            this.mapper = _mapper;
             db = _db;
         }
 
