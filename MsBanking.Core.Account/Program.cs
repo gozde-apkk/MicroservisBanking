@@ -6,6 +6,7 @@ using MsBanking.Core.Account.Domain;
 using MsBanking.Core.Account.Services;
 using Serilog.Events;
 using Serilog;
+using MsBanking.Core.Account.Domain.Dto;
 
 namespace MsBanking.Core.Account
 {
@@ -22,14 +23,18 @@ namespace MsBanking.Core.Account
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-             builder.Services.AddAutoMapper(typeof(AccountDtoProfile));
-             builder.Services.AddScoped<IAccountService, AccountService>();
+           
+         
             //sql server
             builder.Services.AddDbContext<AccountDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
+            builder.Services.AddScoped<IAccountService, AccountService>();
+            builder.Services.AddScoped<IAccountTransactionService, AccountTransactionService>();
 
 
+            builder.Services.AddAutoMapper(typeof(AccountDtoProfile));
+            builder.Services.AddAutoMapper(typeof(AccountResponseRequestProfile));
             var app = builder.Build();
 
 

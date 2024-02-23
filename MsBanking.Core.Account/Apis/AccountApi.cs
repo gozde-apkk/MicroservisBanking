@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using MsBanking.Common.Dto;
+using MsBanking.Core.Account.Domain.Dto;
 using MsBanking.Core.Account.Services;
 using Serilog;
 
@@ -13,6 +14,10 @@ namespace MsBanking.Core.Account.Apis
             app.MapGet("/account", GetAllAccounts);
             app.MapGet("/account/{id}", GetAccount);
             app.MapPost("/account", CreateAccount);
+
+
+            app.MapPost("/acctransaction", CreateAccountTransaction);
+            app.MapGet("/acctranhistory/{accountId}", GetAccountTransactionHistory);
             return app;
         }
 
@@ -37,10 +42,26 @@ namespace MsBanking.Core.Account.Apis
 
         private static async Task<Results<Ok<AccountResponseDto>, BadRequest>> CreateAccount(IAccountService service, AccountDto account)
         {
+
             var createdAccount = await service.CreateAccount(account);
             return TypedResults.Ok(createdAccount);
         }
 
-    
+        
+        private static async Task<Results<Ok<AccountTransactionResponseDto>, BadRequest>> CreateAccountTransaction(IAccountTransactionService service, AccountTransactionRequestDto accountTransaction)
+        {
+            Log.Information("Called CreateAccountTransaction param: {accountTransaction}", accountTransaction);
+            var createdAccountTransaction = await service.CreateAccountTransaction(accountTransaction);
+            return TypedResults.Ok(createdAccountTransaction);
+        }   
+
+        private static async Task<Results<Ok<List<AccountTransactionRequestDto>>, NotFound>> GetAccountTransactionHistory(IAccountTransactionService service, int accountId)
+        {
+            Log.Information("Called GetAccountTransactionHistory param: {accountId}", accountId);
+            var accountTransactions = await service.GetAllTransanctions(accountId);
+            if (!accountTransactions.Any())
+                return TypedResults.NotFound();
+            return TypedResults.Ok(accountTransactions);
+        }
     }
 }
