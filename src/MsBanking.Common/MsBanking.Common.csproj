@@ -17,6 +17,8 @@
     </PackageReference>
     <PackageReference Include="MongoDB.Driver" Version="2.23.1" />
     <PackageReference Include="Ocelot" Version="23.0.0" />
+    <PackageReference Include="Serilog" Version="3.1.2-dev-02097" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.1-dev-00972" />
   </ItemGroup>
 
 </Project>
