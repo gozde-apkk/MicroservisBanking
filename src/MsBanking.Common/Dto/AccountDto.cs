@@ -10,7 +10,7 @@ namespace MsBanking.Common.Dto
     {
         public string AccountNumber { get; set; }
         public string IbanNumber { get; set; }
-        public int AccountType { get; set; }
+        public string AccountType { get; set; }
         public decimal Balance { get; set; }
         public string Currency { get; set; }
         public string UserId { get; set; }
