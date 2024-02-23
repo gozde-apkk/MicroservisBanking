@@ -10,8 +10,8 @@ namespace MsBanking.Common.Entity
     public class Customer : BaseEntity  
     {
         [BsonId]
-        [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
-        public int Id { get; set; }
+        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
+        public string Id { get; set; }
         public string? FullName { get; set; }
         public long? CitizenNumber { get; set; }
          public string? Email { get; set;}

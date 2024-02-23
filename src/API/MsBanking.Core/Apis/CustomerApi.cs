@@ -25,7 +25,7 @@ namespace MsBanking.Core.Apis
             return TypedResults.Ok(customers);
         }
 
-        private static async Task<Results<Ok<CustomerResponseDto    >, NotFound>> GetCustomer(ICustomerService service, int id)
+        private static async Task<Results<Ok<CustomerResponseDto>, NotFound>> GetCustomer(ICustomerService service, string id)
         {
             var customer = await service.GetCustomer(id);
             if (customer == null)
@@ -39,7 +39,7 @@ namespace MsBanking.Core.Apis
             return TypedResults.Ok(newCustomer);
         }
 
-        private static async Task<Results<Ok<CustomerResponseDto>, NotFound>> UpdateCustomer(ICustomerService service, int id, CustomerDto customer)
+        private static async Task<Results<Ok<CustomerResponseDto>, NotFound>> UpdateCustomer(ICustomerService service, string id, CustomerDto customer)
         {
             var updatedCustomer = await service.UpdateCustomer(id, customer);
             if (updatedCustomer == null)
@@ -47,7 +47,7 @@ namespace MsBanking.Core.Apis
             return TypedResults.Ok(updatedCustomer);
         }
      
-        private static async Task<Results<Ok, NotFound>> DeleteCustomer(ICustomerService service, int id)
+        private static async Task<Results<Ok, NotFound>> DeleteCustomer(ICustomerService service, string id)
         {
             var deleted = await service.DeleteCustomer(id);
             if (!deleted)

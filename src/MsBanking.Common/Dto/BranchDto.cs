@@ -30,7 +30,7 @@ namespace MsBanking.Common.Dto
         {
             CreateMap<MsBanking.Common.Entity.Branch, BranchDto>().ReverseMap();
             CreateMap<MsBanking.Common.Entity.Branch, BranchResponseDto>()
-                .ForMember(x => x.CityName, opt => opt.MapFrom(src => Enum.GetName(typeof(CityEnum  ), src.CityId)))
+                .ForMember(x => x.CityName, opt => opt.MapFrom(src => Enum.GetName(typeof(CityEnum), src.CityId)))
                 .ForMember(x => x.CountryName, opt => opt.MapFrom(src => Enum.GetName(typeof(CountryEnum), src.CountryId)))
                 .ReverseMap();
         }

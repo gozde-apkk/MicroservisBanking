@@ -21,7 +21,7 @@ namespace MsBanking.Core.Service
             mapper = _mapper;
         }
 
-        public async Task<CustomerResponseDto> GetCustomer(int id)
+        public async Task<CustomerResponseDto> GetCustomer(string id)
         {
             var customerEntity = await customerCollection.FindAsync(c => c.Id == id);
             var entity = customerEntity.FirstOrDefault();
@@ -51,7 +51,7 @@ namespace MsBanking.Core.Service
             return customerResponse;
         }
 
-        public async Task<CustomerResponseDto> UpdateCustomer(int id, CustomerDto customer)
+        public async Task<CustomerResponseDto> UpdateCustomer(string id, CustomerDto customer)
         {
 
             var customerEntity = mapper.Map<Customer>(customer);
@@ -62,7 +62,7 @@ namespace MsBanking.Core.Service
             return customerResponseDto; 
         }
 
-        public async Task<bool> DeleteCustomer(int id)
+        public async Task<bool> DeleteCustomer(string id)
         {
             var customerEntity = await customerCollection.FindAsync(c => c.Id == id);
             var entity = customerEntity.FirstOrDefault();
