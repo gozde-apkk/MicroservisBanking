@@ -23,7 +23,7 @@ namespace MsBanking.Core.Service
 
         public async Task<CustomerResponseDto> GetCustomer(string id)
         {
-            var customerEntity = await customerCollection.FindAsync(c => c.Id == id);
+            var customerEntity = await customerCollection.FindAsync(c => c.isActive && c.Id == id);
             var entity = customerEntity.FirstOrDefault();
             var mapped = mapper.Map<CustomerResponseDto>(entity);
             return mapped;
@@ -31,7 +31,7 @@ namespace MsBanking.Core.Service
 
         public async Task<List<CustomerResponseDto>> GetCustomers()
         {
-            var customersEntities = await customerCollection.FindAsync(c => true);
+            var customersEntities = await customerCollection.FindAsync(c => c.isActive);
             var customerList = customersEntities.ToList();
             var mapped = mapper.Map<List<CustomerResponseDto>>(customerList);
             return mapped;
@@ -55,6 +55,10 @@ namespace MsBanking.Core.Service
         {
 
             var customerEntity = mapper.Map<Customer>(customer);
+
+            var existCustomer = await this.GetCustomer(id);
+            if (existCustomer == null)
+                return null;
             customerEntity.UpdatedDate = DateTime.Now;
             await customerCollection.ReplaceOneAsync(c => c.Id == id, customerEntity);
             

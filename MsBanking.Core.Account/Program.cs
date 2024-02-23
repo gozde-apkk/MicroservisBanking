@@ -37,7 +37,7 @@ namespace MsBanking.Core.Account
             //serilog configuration
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
-                .WriteTo.File("log.txt")
+                .WriteTo.File("log/ log.txt")
                 .WriteTo.Console(restrictedToMinimumLevel: LogEventLevel.Information)
                 .CreateLogger();
             // Configure the HTTP request pipeline.
