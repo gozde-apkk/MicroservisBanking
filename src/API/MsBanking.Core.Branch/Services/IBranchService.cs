@@ -9,5 +9,6 @@ namespace MsBanking.Core.Branch.Services
         Task<BranchResponseDto> GetBranchByIdAsync(int id);
         Task<List<BranchResponseDto>> GetBranchesAsync();
         Task<BranchResponseDto> UpdateBranchAsync(int id, BranchDto branchDto);
+        Task<BranchResponseDto> GetBranchByCityIdAsync(int cityId);
     }
 }
