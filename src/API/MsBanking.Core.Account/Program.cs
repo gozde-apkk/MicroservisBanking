@@ -3,10 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using MsBanking.Common.Dto;
 using MsBanking.Core.Account.Apis;
 using MsBanking.Core.Account.Domain;
-using MsBanking.Core.Account.Services;
-using Serilog.Events;
-using Serilog;
 using MsBanking.Core.Account.Domain.Dto;
+using MsBanking.Core.Account.Services;
+using Serilog;
 
 namespace MsBanking.Core.Account
 {
@@ -23,28 +22,24 @@ namespace MsBanking.Core.Account
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-           
-         
-            //sql server
-            builder.Services.AddDbContext<AccountDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
 
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<IAccountTransactionService, AccountTransactionService>();
 
+            //sql server
+            builder.Services.AddDbContext<AccountDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddAutoMapper(typeof(AccountDtoProfile));
             builder.Services.AddAutoMapper(typeof(AccountResponseRequestProfile));
             var app = builder.Build();
 
 
-
-            //serilog configuration
-            Log.Logger = new LoggerConfiguration()
+            //Serilog configuration
+            var logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
-                .WriteTo.File("log/ log.txt")
-                .WriteTo.Console(restrictedToMinimumLevel: LogEventLevel.Information)
+                .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
+            Log.Logger = logger;
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -52,10 +47,9 @@ namespace MsBanking.Core.Account
                 app.UseSwaggerUI();
             }
 
-
             app.MapGroup("/api/v1/")
-                .WithTags("Account")
-                .MapAccountApi();
+            .WithTags("Account Api v1")
+             .MapAccountApi();
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

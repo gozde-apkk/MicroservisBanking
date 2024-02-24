@@ -11,10 +11,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0-nanoserver-1809 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["MsBanking.Core.Account/MsBanking.Core.Account.csproj", "MsBanking.Core.Account/"]
-RUN dotnet restore "./MsBanking.Core.Account/MsBanking.Core.Account.csproj"
+COPY ["src/API/MsBanking.Core.Account/MsBanking.Core.Account.csproj", "src/API/MsBanking.Core.Account/"]
+RUN dotnet restore "./src/API/MsBanking.Core.Account/MsBanking.Core.Account.csproj"
 COPY . .
-WORKDIR "/src/MsBanking.Core.Account"
+WORKDIR "/src/src/API/MsBanking.Core.Account"
 RUN dotnet build "./MsBanking.Core.Account.csproj" -c %BUILD_CONFIGURATION% -o /app/build
 
 FROM build AS publish

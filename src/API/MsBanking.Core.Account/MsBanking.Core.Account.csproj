@@ -4,8 +4,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>f46be0a7-0256-4e2b-87f1-0f939dd5045f</UserSecretsId>
+    <UserSecretsId>72df2704-87b0-473d-92e5-8f1091529d3a</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,4 +23,4 @@
     <ProjectReference Include="..\..\MsBanking.Common\MsBanking.Common.csproj" />
   </ItemGroup>
 
-<ProjectReference Include="..\..\MsBanking.Common\MsBanking.Common.csproj" /></Project>
+</Project>
