@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using MsBanking.Core.CreditCard.Domain;
+
 namespace MsBanking.Core.CreditCard
 {
     public class Program
@@ -13,6 +16,13 @@ namespace MsBanking.Core.CreditCard
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+
+
+
+            //sql server
+            builder.Services.AddDbContext<CreditCardDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
             var app = builder.Build();
 
@@ -30,6 +40,8 @@ namespace MsBanking.Core.CreditCard
 
             app.MapControllers();
 
+
+            DataSeeder.Seed(app);
             app.Run();
         }
     }

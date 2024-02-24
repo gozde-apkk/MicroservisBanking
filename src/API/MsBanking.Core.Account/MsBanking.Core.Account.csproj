@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\MsBanking.Common\MsBanking.Common.csproj" />
-    <ProjectReference Include="..\src\MsBanking.Common\MsBanking.Common.csproj" />
   </ItemGroup>
 
-</Project>
+<ProjectReference Include="..\..\MsBanking.Common\MsBanking.Common.csproj" /></Project>
