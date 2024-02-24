@@ -10,10 +10,10 @@ namespace MsBanking.Core.Account.Services
         private readonly AccountDbContext db;
         private readonly IMapper mapper;
 
-        public AccountService(AccountDbContext db, IMapper mapper)
+        public AccountService(AccountDbContext _db, IMapper _mapper)
         {
-            this.db = db;
-            this.mapper = mapper;
+            db = _db;
+            mapper = _mapper;
         }
 
         public async Task<AccountResponseDto> CreateAccount(AccountDto account)

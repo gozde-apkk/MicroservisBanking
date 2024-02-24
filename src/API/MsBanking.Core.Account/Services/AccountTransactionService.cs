@@ -7,14 +7,12 @@ namespace MsBanking.Core.Account.Services
 {
     public class AccountTransactionService : IAccountTransactionService
     {
-
-
         private readonly AccountDbContext db;
         private readonly IMapper mapper;
 
         public AccountTransactionService(AccountDbContext _db, IMapper _mapper)
         {
-            this.mapper = _mapper;
+            mapper = _mapper;
             db = _db;
         }
 
@@ -91,6 +89,5 @@ namespace MsBanking.Core.Account.Services
             await WithdrawFromAccount(fromAccountId, amount);
             await DepositToAccount(toAccountId, amount);
         }
-
     }
 }
