@@ -7,7 +7,7 @@ namespace MsBanking.Core.Account.Domain.Dto
         public int AccountId { get; set; }
         public decimal TotalBalance { get; set; }
         public DateTime TransactionDate { get; set; }
-        public string? Description { get; set; }
+        public string Description { get; set; }
     }
 
     public class AccountTransactionRequestDto
@@ -15,7 +15,7 @@ namespace MsBanking.Core.Account.Domain.Dto
         public int AccountId { get; set; }
         public decimal Amount { get; set; }
         public DateTime TransactionDate { get; set; }
-        public string? Description { get; set; }
+        public string Description { get; set; }
         public int TransactionType { get; set; }
         public int? ToAccountId { get; set; }
     }
