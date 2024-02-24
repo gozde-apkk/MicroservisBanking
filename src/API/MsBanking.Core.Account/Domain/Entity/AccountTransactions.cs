@@ -12,5 +12,6 @@ namespace MsBanking.Core.Account.Domain.Entity
         public string Description { get; set; }
         public int TransactionType { get; set; }
         public int? ToAccountId { get; set; }
+
     }
 }
