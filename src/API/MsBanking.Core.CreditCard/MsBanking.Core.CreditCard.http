@@ -1,6 +1,0 @@
-@MsBanking.Core.CreditCard_HostAddress = http://localhost:5261
-
-GET {{MsBanking.Core.CreditCard_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
