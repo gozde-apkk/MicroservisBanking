@@ -6,23 +6,33 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MsBanking.Core.Account.Migrations
 {
     /// <inheritdoc />
-    public partial class AddAccountTransaction : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_Accounts",
-                table: "Accounts");
-
-            migrationBuilder.RenameTable(
-                name: "Accounts",
-                newName: "Account");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Account",
-                table: "Account",
-                column: "Id");
+            migrationBuilder.CreateTable(
+                name: "Account",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AccountNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IbanNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AccountType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Balance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Currency = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BranchId = table.Column<int>(type: "int", nullable: false),
+                    AccountSuffix = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    isActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Account", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "AccountTransaction",
@@ -63,18 +73,8 @@ namespace MsBanking.Core.Account.Migrations
             migrationBuilder.DropTable(
                 name: "AccountTransaction");
 
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_Account",
-                table: "Account");
-
-            migrationBuilder.RenameTable(
-                name: "Account",
-                newName: "Accounts");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Accounts",
-                table: "Accounts",
-                column: "Id");
+            migrationBuilder.DropTable(
+                name: "Account");
         }
     }
 }
